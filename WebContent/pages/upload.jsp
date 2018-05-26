@@ -127,6 +127,8 @@
 		         DetectLabelsResult result = rekognitionClient.detectLabels(AWSRequest);
 		         List <Label> labels = result.getLabels();
 
+	             out.println("<a href='/aws-rekognition-java-web'>Kembali</a><br/>");
+	             out.println("<img src='/aws-rekognition-java-web/pages/uploads/" + fileName  + "' width='500px'/><br/>");
 		         out.println("Detected labels for " + photo + "<br/>");
 		         for (Label label: labels) {
 		            out.println(label.getName() + ": " + label.getConfidence().toString() + "<br/>");
@@ -136,7 +138,6 @@
 		      }
                // END post to AWS
                
-               out.println("<img src='/aws-rekognition-java-web/pages/uploads/" + fileName  + "'/>");
             }
          }
          out.println("</body>");

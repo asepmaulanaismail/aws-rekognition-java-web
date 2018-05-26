@@ -6,7 +6,7 @@
    <body>
       <h3>File Upload:</h3>
       Select a file to upload: <br />
-      <form action = "upload.jsp" method = "post"
+      <form action = "pages/upload.jsp" method = "post"
          enctype = "multipart/form-data">
          <input type = "file" name = "file" size = "50" accept=".jpg" />
          <br />
