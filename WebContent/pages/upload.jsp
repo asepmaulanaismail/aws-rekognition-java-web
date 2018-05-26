@@ -121,13 +121,13 @@
 		    		  .withS3Object(new S3Object()
 		    		  .withName(photo).withBucket(bucket)))
 		    		  .withMaxLabels(10)
-		    		  .withMinConfidence(75F);
+		    		  .withMinConfidence(30F);
 
 		      try {
 		         DetectLabelsResult result = rekognitionClient.detectLabels(AWSRequest);
 		         List <Label> labels = result.getLabels();
 
-		         out.println("<br/>Detected labels for " + photo);
+		         out.println("Detected labels for " + photo + "<br/>");
 		         for (Label label: labels) {
 		            out.println(label.getName() + ": " + label.getConfidence().toString() + "<br/>");
 		         }
