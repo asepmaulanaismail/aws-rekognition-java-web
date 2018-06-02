@@ -59,8 +59,24 @@
          out.println("<html>");
          out.println("<head>");
          out.println("<title>JSP File upload</title>");  
+         out.println("<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB' crossorigin='anonymous'>"); 
          out.println("</head>");
-         out.println("<body>");
+         out.println("<body class='container' style='margin-top: 100px;'>");
+         out.println("<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>");
+        out.println("<div class='container'>");
+        out.println("<a class='navbar-brand' href='#'>PBO 6</a>");
+        out.println("<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>");
+        out.println("<span class='navbar-toggler-icon'></span>");
+        out.println("</button>");
+        out.println("</div>");
+		 out.println("</nav>");
+         out.println("<div class='row' style='margin-bottom: 10px;'>");
+         out.println("<div class='col-md-6'>");
+         out.println("<a href='/aws-rekognition-java-web' class='btn btn-primary'>Kembali</a>");
+         out.println("</div>");
+         out.println("</div>");
+         out.println("<div class='row'>");
+         out.println("<div class='col-md-6'>");
          
          while ( i.hasNext () ) {
             FileItem fi = (FileItem)i.next();
@@ -127,12 +143,14 @@
 		         DetectLabelsResult result = rekognitionClient.detectLabels(AWSRequest);
 		         List <Label> labels = result.getLabels();
 
-	             out.println("<a href='/aws-rekognition-java-web'>Kembali</a><br/>");
-	             out.println("<img src='/aws-rekognition-java-web/pages/uploads/" + fileName  + "' width='500px'/><br/>");
-		         out.println("Detected labels for " + photo + "<br/>");
+	             out.println("<img src='/aws-rekognition-java-web/pages/uploads/" + fileName  + "' width='500px'/>");
+	             out.println("</div>");
+	             out.println("<div class='col-md-6'>");
+		         out.println("<h4>Detected labels</h4>");
 		         for (Label label: labels) {
 		            out.println(label.getName() + ": " + label.getConfidence().toString() + "<br/>");
 		         }
+	             out.println("</div>");
 		      } catch(AmazonRekognitionException e) {
 		         e.printStackTrace();
 		      }
@@ -140,6 +158,7 @@
                
             }
          }
+         out.println("</div>");
          out.println("</body>");
          out.println("</html>");
       } catch(Exception ex) {
